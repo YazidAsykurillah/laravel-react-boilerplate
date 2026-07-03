@@ -6,6 +6,7 @@ services:
       dockerfile: docker/php/Dockerfile
     container_name: laravel_react_boilerplate-app
     working_dir: /var/www
+    user: "1000:1000"
     volumes:
       - .:/var/www
     depends_on:
@@ -56,6 +57,20 @@ services:
     networks:
     - app-network
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: laravel_react_boilerplate-phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    depends_on:
+      - mysql
+    restart: unless-stopped
+    networks:
+      - app-network
+
   redis:
     image: redis:8-alpine
     container_name: laravel_react_boilerplate-redis
@@ -84,6 +99,7 @@ services:
     container_name: laravel_react_boilerplate-queue
     working_dir: /var/www
     command: php artisan queue:work --tries=3 --timeout=90
+    user: "1000:1000"
     volumes:
       - .:/var/www
     depends_on:
@@ -100,6 +116,7 @@ services:
     container_name: laravel_react_boilerplate-scheduler
     working_dir: /var/www
     command: sh -c "while true; do php artisan schedule:run --verbose --no-interaction; sleep 60; done"
+    user: "1000:1000"
     volumes:
       - .:/var/www
     depends_on:
