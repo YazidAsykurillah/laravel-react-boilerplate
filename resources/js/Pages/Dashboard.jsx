@@ -1,26 +1,58 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import AdminLayout from '@/Layouts/AdminLayout';
 import { Head } from '@inertiajs/react';
 
 export default function Dashboard() {
     return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    Dashboard
-                </h2>
-            }
-        >
+        <AdminLayout>
             <Head title="Dashboard" />
 
-            <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                            You're logged in!
-                        </div>
+            <div>
+                <h1 className="text-2xl font-bold mb-6">
+                    Dashboard
+                </h1>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="bg-white rounded-lg shadow p-6">
+                        <h3 className="text-gray-500">
+                            Users
+                        </h3>
+
+                        <p className="text-3xl font-bold">
+                            0
+                        </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg shadow p-6">
+                        <h3 className="text-gray-500">
+                            Roles
+                        </h3>
+
+                        <p className="text-3xl font-bold">
+                            0
+                        </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg shadow p-6">
+                        <h3 className="text-gray-500">
+                            Permissions
+                        </h3>
+
+                        <p className="text-3xl font-bold">
+                            0
+                        </p>
+                    </div>
+
+                    <div className="bg-white rounded-lg shadow p-6">
+                        <h3 className="text-gray-500">
+                            Activity Logs
+                        </h3>
+
+                        <p className="text-3xl font-bold">
+                            0
+                        </p>
                     </div>
                 </div>
             </div>
-        </AuthenticatedLayout>
+        </AdminLayout>
     );
 }
