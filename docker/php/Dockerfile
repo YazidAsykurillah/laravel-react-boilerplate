@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     nano \
+    procps \
     zip \
     unzip \
     libzip-dev \
@@ -21,7 +22,11 @@ RUN apt-get update && apt-get install -y \
         pcntl \
         bcmath \
         intl \
-        zip
+        zip \
+        opcache
+
+RUN pecl install redis \
+    && docker-php-ext-enable redis
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
