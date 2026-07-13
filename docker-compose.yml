@@ -140,18 +140,18 @@ services:
     networks:
     - app-network
 
-  ssr:
-    image: node:22-alpine
-    container_name: laravel_react_boilerplate-ssr
-    working_dir: /var/www
-    command: sh -c "npm install && npm run ssr"
-    volumes:
-      - .:/var/www
-    depends_on:
-      - app
-    restart: unless-stopped
-    networks:
-      - app-network
+  # ssr:
+  #   image: node:22-alpine
+  #   container_name: laravel_react_boilerplate-ssr
+  #   working_dir: /var/www
+  #   command: sh -c "npm install && npm run ssr"
+  #   volumes:
+  #     - .:/var/www
+  #   depends_on:
+  #     - app
+  #   restart: unless-stopped
+  #   networks:
+  #     - app-network
 
 volumes:
   mysql_data:
